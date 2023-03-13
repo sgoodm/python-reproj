@@ -4,7 +4,7 @@ Reproject shapely features
 
 [![build badge](https://github.com/sgoodm/python-reproj/actions/workflows/test-with-coverage.yml/badge.svg)](https://github.com/sgoodm/python-reproj/actions/workflows/test-and-coverage.yml)
 [![Coverage Status](https://coveralls.io/repos/github/sgoodm/python-reproj/badge.svg)](https://coveralls.io/github/sgoodm/python-reproj)
-[![Downloads](https://static.pepy.tech/personalized-badge/distancerasters?period=total&units=international_system&left_color=lightgrey&right_color=brightgreen&left_text=Downloads)](https://pepy.tech/project/distancerasters)
+[![Downloads](https://static.pepy.tech/personalized-badge/reproj?period=total&units=international_system&left_color=lightgrey&right_color=brightgreen&left_text=Downloads)](https://pepy.tech/project/reproj)
 
 
 Reproj is a minimalistic package designed to do one thing: reproject shapely features with a single call. GeoPandas has a simple `to_crs` method for GeoDataFrames which we aim to mirror in ease of use for standalone shapely features. To be honest, this isn't difficult to do using pyproj and shapely with a couple of lines of code, but we decided to make it even easier.
