@@ -1,0 +1,2 @@
+pyproj>=2.1.0
+shapely

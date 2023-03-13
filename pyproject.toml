@@ -1,0 +1,64 @@
+[build-system]
+requires = [
+    "setuptools>=61",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "reproj"
+description = "Reproject shapely geometries"
+authors = [
+    {name = "Seth Goodman", email = "sgoodman@aiddata.wm.edu"},
+]
+readme = "README.md"
+keywords = ["projection", "transform", "vector", "gis", "geospatial", "geographic"]
+dynamic = ["version"]
+license = {text = "BSD-3-Clause"}
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Utilities",
+    "Topic :: Scientific/Engineering :: GIS",
+]
+requires-python = ">=3.7"
+dependencies = [
+    "pyproj >=2.1.0",
+    "shapely",
+]
+
+
+[project.optional-dependencies]
+test = [
+    "coverage",
+    "pytest >=4.6",
+    "pytest-cov >=2.2.0",
+]
+dev = [
+    "reproj[test]",
+    "twine",
+]
+
+
+[project.urls]
+"Source Code" = "https://github.com/sgoodm/python-reproj"
+"Bug Tracker" = "https://github.com/sgoodm/python-reproj/issues"
+
+[tool.setuptools.dynamic]
+version = {attr = "reproj.__init__.__version__"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.isort]
+profile = "black"
+known_first_party = ["reproj"]

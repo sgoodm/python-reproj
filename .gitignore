@@ -1,0 +1,9 @@
+*.pyc
+build/*
+dist/*
+.DS_Store
+MANIFEST
+*.egg-info
+htmlcov
+.coverage
+__pycache__
