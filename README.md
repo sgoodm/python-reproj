@@ -3,7 +3,9 @@
 Reproject shapely features
 
 [![build badge](https://github.com/sgoodm/python-reproj/actions/workflows/test-with-coverage.yml/badge.svg)](https://github.com/sgoodm/python-reproj/actions/workflows/test-and-coverage.yml)
-[![Coverage Status](https://coveralls.io/repos/github/sgoodm/python-reproj/badge.svg)](https://coveralls.io/github/sgoodm/python-reproj)
+
+[![Coverage Status](https://coveralls.io/repos/github/sgoodm/python-reproj/badge.svg?branch=main)](https://coveralls.io/github/sgoodm/python-reproj?branch=main)
+
 [![Downloads](https://static.pepy.tech/personalized-badge/reproj?period=total&units=international_system&left_color=lightgrey&right_color=brightgreen&left_text=Downloads)](https://pepy.tech/project/reproj)
 
 
@@ -66,7 +68,7 @@ New issues are always welcome, and if you'd like to make a change, fork the repo
 
 We use Pytest and Coveralls to run unit tests and track code coverage of tests. If you submit code, please make sure it passes existing tests and adds relevant testing coverage for new features.
 
-You can run tests and coverage checks locally, or you can fork the repository and utilize GitHub actions and Coveralls. To use GitHub actions and Coveralls, you'll need to add your forked repo to your own Coverall accounts and add you Coveralls token to your repository as a GitHub Secret (see below).
+You can run tests and coverage checks locally, or you can fork the repository and utilize GitHub actions and Coveralls. To use GitHub actions and Coveralls, you'll need to add your forked repo to your own Coverall accounts and add your Coveralls token to your repository as a GitHub Secret (see below).
 
 
 To run tests and coverage checks locally, you can use the following commands:
