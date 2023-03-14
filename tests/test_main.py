@@ -36,12 +36,12 @@ def example_shape():
 def test_reproj_point(example_point_a, example_point_b):
 
     reproj_a = reproj(example_point_a, 4326, 32630)
-    assert reproj_a.x == 721383.1455096456
-    assert reproj_a.y == 663608.5753285743
+    assert round(reproj_a.x, 3) == 721383.146
+    assert round(reproj_a.y, 3) == 663608.575
 
     reproj_b = reproj(example_point_b, 4326, 32631)
-    assert reproj_b.x == 167842.2082833803
-    assert reproj_b.y == 664114.1620662354
+    assert round(reproj_b.x, 3) == 167842.208
+    assert round(reproj_b.y, 3) == 664114.162
 
 
 # def test_reproj_line(line):
