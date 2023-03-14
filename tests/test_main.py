@@ -3,34 +3,24 @@ import pytest
 from reproj import reproj
 from shapely.geometry import shape, Point, LineString, Polygon, MultiPolygon
 from pyproj.exceptions import CRSError
+import fiona
+
 
 @pytest.fixture
 def example_point_a():
     # https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
     return Point(-1, 6)
 
+
 @pytest.fixture
 def example_point_b():
     # https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
     return Point(0, 6)
 
-@pytest.fixture
-def example_line():
-    # https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
-    return LineString([(1, 2), (1, 3), (2, 3)])
-
-@pytest.fixture
-def example_polygon():
-    return Polygon([(1, 1), (1, 2), (2, 2), (2, 1), (1, 1)])
-
-@pytest.fixture
-def example_multipolygon():
-    return MultiPolygon([[(1, 1), (1, 2), (2, 2), (2, 1), (1, 1)],
-                         [(3, 3), (3, 4), (4, 4), (4, 3), (3, 3)]])
 
 @pytest.fixture
 def example_shape():
-    return shape({"type": "Point", "coordinates": [1, 2]})
+    return shape({"type": "Point", "coordinates": [-1, 6]})
 
 
 def test_reproj_point(example_point_a, example_point_b):
@@ -44,16 +34,29 @@ def test_reproj_point(example_point_a, example_point_b):
     assert round(reproj_b.y, 3) == 664114.162
 
 
-# def test_reproj_line(line):
-#     assert reproj(line, 4326, 32630) == ???
+def test_reproj_point(example_shape):
+
+    reproj_a = reproj(example_shape, 4326, 32630)
+    assert round(reproj_a.x, 3) == 721383.146
+    assert round(reproj_a.y, 3) == 663608.575
 
 
-# def test_reproj_polygon(polygon):
-#     assert reproj(polygon, 4326, 32630) == ???
+def test_reproj_line():
+    src_4326 = fiona.open('./examples/data/linestring_4326.geojson')
+    src_32630 = fiona.open('./examples/data/linestring_32630.geojson')
+    assert round(reproj(shape(src_4326[0].geometry), 4326, 32630).length, 3) == round(shape(src_32630[0].geometry).length, 3)
 
 
-# def test_reproj_multipolygon(multipolygon):
-#     assert reproj(multipolygon, 4326, 32630) == ???
+def test_reproj_polygon():
+    src_4326 = fiona.open('./examples/data/polygon_4326.geojson')
+    src_32630 = fiona.open('./examples/data/polygon_32630.geojson')
+    assert round(reproj(shape(src_4326[0].geometry), 4326, 32630).area, 3) == round(shape(src_32630[0].geometry).area, 3)
+
+
+def test_reproj_multipolygon():
+    src_4326 = fiona.open('./examples/data/multipolygon_4326.geojson')
+    src_32630 = fiona.open('./examples/data/multipolygon_32630.geojson')
+    assert round(reproj(shape(src_4326[0].geometry), 4326, 32630).area, 3) == round(shape(src_32630[0].geometry).area, 3)
 
 
 def test_valid_crs():
