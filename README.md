@@ -3,9 +3,7 @@
 Reproject shapely features
 
 [![build badge](https://github.com/sgoodm/python-reproj/actions/workflows/test-with-coverage.yml/badge.svg)](https://github.com/sgoodm/python-reproj/actions/workflows/test-and-coverage.yml)
-
 [![Coverage Status](https://coveralls.io/repos/github/sgoodm/python-reproj/badge.svg?branch=main)](https://coveralls.io/github/sgoodm/python-reproj?branch=main)
-
 [![Downloads](https://static.pepy.tech/personalized-badge/reproj?period=total&units=international_system&left_color=lightgrey&right_color=brightgreen&left_text=Downloads)](https://pepy.tech/project/reproj)
 
 

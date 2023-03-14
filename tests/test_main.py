@@ -13,10 +13,14 @@ from shapely.geometry import shape, Point, LineString, Polygon, MultiPolygon
 
 
 @pytest.fixture
-def example_point():
+def example_point_a():
     # https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
-    return Point(1, 2)
+    return Point(-1, 6)
 
+@pytest.fixture
+def example_point_b():
+    # https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry
+    return Point(0, 6)
 
 @pytest.fixture
 def example_line():
@@ -38,12 +42,15 @@ def example_shape():
 
 
 
-def test_main(example_point):
-    reproj(example_point, 4326, 32630)
+def test_reproj_point(example_point_a, example_point_b):
 
+    reproj_a = reproj(example_point_a, 4326, 32630)
+    assert reproj_a.x == 721383.1455096456
+    assert reproj_a.y == 663608.5753285743
 
-# def test_reproj_point(point):
-#     assert reproj(example_point(), 4326, 32630) == ???
+    reproj_b = reproj(example_point_b, 4326, 32631)
+    assert reproj_b.x == 167842.2082833803
+    assert reproj_b.y == 664114.1620662354
 
 
 # def test_reproj_line(line):
