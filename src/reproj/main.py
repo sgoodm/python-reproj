@@ -25,7 +25,7 @@ def reproj(feat, src_crs, dst_crs):
 
     """
 
-    new_transformer = pyproj.Transformer.from_crs(src_crs, dst_crs)
+    new_transformer = pyproj.Transformer.from_crs(src_crs, dst_crs, always_xy=True)
 
     reproj_feat = shapely.ops.transform(new_transformer.transform, feat)
 
