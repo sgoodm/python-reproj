@@ -1,16 +1,8 @@
 
-import os
-import sys
-
 import pytest
 from reproj import reproj
 from shapely.geometry import shape, Point, LineString, Polygon, MultiPolygon
-
-
-
-# EXAMPLES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "examples")
-# polygons = os.path.join(EXAMPLES, "polygons.shp")
-
+from pyproj.exceptions import CRSError
 
 @pytest.fixture
 def example_point_a():
@@ -41,7 +33,6 @@ def example_shape():
     return shape({"type": "Point", "coordinates": [1, 2]})
 
 
-
 def test_reproj_point(example_point_a, example_point_b):
 
     reproj_a = reproj(example_point_a, 4326, 32630)
@@ -65,12 +56,16 @@ def test_reproj_point(example_point_a, example_point_b):
 #     assert reproj(multipolygon, 4326, 32630) == ???
 
 
-# def test_bad_build_distance_array(example_raster_array):
-#     with pytest.raises(TypeError):
-#         reproj(???)
+def test_valid_crs():
+    reproj(Point(1,1), 4326, 32630)
+    reproj(Point(1,1), 4326, 'EPSG:32630')
+    reproj(Point(1,1), 4326, 'epsg:32630')
 
-#     with pytest.raises(ValueError):
-#         reproj(???)
 
-#     with pytest.raises(Exception):
-#         reproj(???)
+def test_invalid_crs():
+
+    with pytest.raises(CRSError):
+        reproj(Point(1,1), 4326, '32630')
+
+    with pytest.raises(CRSError):
+        reproj(Point(1,1), 4326, 123456789)
