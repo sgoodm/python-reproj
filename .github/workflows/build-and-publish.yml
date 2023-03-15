@@ -24,7 +24,7 @@ jobs:
         pip install build
     - name: Get version
       run: |
-        cat src/reproj/__init__.py | grep "__version__ = " | awk '{print "VERSION="$(NF)}' >> $GITHUB_ENV
+        cat src/reproj/__init__.py | grep "__version__ = " | awk '{print "VERSION="$(NF)}' | tr -d \" >> $GITHUB_ENV
     - name: Build a binary wheel and a source tarball 🚧
       run: python -m build --sdist --wheel --outdir dist/ .
     - name: Validate release tag
