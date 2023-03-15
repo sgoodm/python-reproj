@@ -3,7 +3,10 @@ on:
   push:
     paths-ignore:
       examples/*
-
+      README.md
+      LICENSE.txt
+      .gitignore
+      requirements.txt
 
 
 jobs:
