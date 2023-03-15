@@ -21,7 +21,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install .
-        pip install pytest pytest-cov build
+        pip install pytest pytest-cov build fiona
     - name: Test with pytest ✅
       run: |
         pytest --cov=reproj
