@@ -7,7 +7,7 @@ Reproject shapely features
 [![Downloads](https://static.pepy.tech/personalized-badge/reproj?period=total&units=international_system&left_color=lightgrey&right_color=brightgreen&left_text=Downloads)](https://pepy.tech/project/reproj)
 
 
-Reproj is a minimalistic package designed to do one thing: reproject shapely features with a single call. GeoPandas has a simple `to_crs` method for GeoDataFrames which we aim to mirror in ease of use for standalone shapely features. To be honest, this isn't difficult to do using pyproj and shapely with a couple of lines of code, but we decided to make it even easier.
+Reproj is a minimalistic package designed to do one thing: reproject shapely features with a single call. [GeoPandas](https://github.com/geopandas/geopandas) has a simple `to_crs` method for GeoDataFrames which we aim to mirror in ease of use for standalone shapely features. To be honest, this isn't difficult to do using [pyproj](https://github.com/pyproj4/pyproj) and [shapely](https://github.com/shapely/shapely) with a couple of lines of code, but we decided to make it even easier.
 
 Without reproj, you would use the following:
 ``` python
