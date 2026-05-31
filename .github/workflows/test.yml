@@ -2,11 +2,11 @@ name: test
 on:
   pull_request:
     paths-ignore:
-      examples/*
-      README.md
-      LICENSE.txt
-      .gitignore
-      requirements.txt
+      - 'examples/*'
+      - 'README.md'
+      - 'LICENSE.txt'
+      - '.gitignore'
+      - 'requirements.txt'
 
 jobs:
   test:
