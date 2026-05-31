@@ -41,6 +41,12 @@ The latest version of reproj is [available on PyPi](https://pypi.org/project/rep
 pip install reproj
 ```
 
+### Using uv
+
+```sh
+uv add reproj
+```
+
 If you'd like to install the latest development (alpha) release, there may be a newer version on [TestPyPi](https://test.pypi.org/project/reproj/):
 ```sh
 pip install -i https://test.pypi.org/simple/ reproj
@@ -48,10 +54,15 @@ pip install -i https://test.pypi.org/simple/ reproj
 
 ### From source
 
-To install this package from source, first clone this repository, then use pip to install:
+To install this package from source, first clone this repository, then install with uv:
 ```sh
 git clone git@github.com:sgoodm/python-reproj.git
 cd python-reproj
+uv sync
+```
+
+Or with pip:
+```sh
 pip install .
 ```
 
@@ -69,11 +80,16 @@ We use Pytest and Coveralls to run unit tests and track code coverage of tests. 
 You can run tests and coverage checks locally, or you can fork the repository and utilize GitHub actions and Coveralls. To use GitHub actions and Coveralls, you'll need to add your forked repo to your own Coverall accounts and add your Coveralls token to your repository as a GitHub Secret (see below).
 
 
-To run tests and coverage checks locally, you can use the following commands:
+To run tests and coverage checks locally using uv:
 ```sh
-pip install pytest coverage
-coverage run -m pytest ./
-coverage html
+uv sync --extra test
+uv run pytest --cov=reproj
+```
+
+Or with pip:
+```sh
+pip install ".[test]"
+pytest --cov=reproj
 ```
 
 ### GitHub Secrets
