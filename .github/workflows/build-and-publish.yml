@@ -14,19 +14,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Python 🐍
-      uses: actions/setup-python@v5
+    - name: Set up uv 🐍
+      uses: astral-sh/setup-uv@v5
       with:
-        python-version: 3.x
-    - name: Install dependencies ⚙️
-      run: |
-        python -m pip install --upgrade pip
-        pip install build
+        python-version: '3.x'
     - name: Get version
       run: |
-        cat src/reproj/__init__.py | grep "__version__ = " | awk '{print "VERSION="$(NF)}' | tr -d \" >> $GITHUB_ENV
+        grep "__version__ = " src/reproj/__init__.py | awk '{print "VERSION="$(NF)}' | tr -d \" >> $GITHUB_ENV
     - name: Build a binary wheel and a source tarball 🚧
-      run: python -m build --sdist --wheel --outdir dist/ .
+      run: uv build
     - name: Validate release tag
       run: |
         if [ "${GITHUB_REF#refs/tags/}" != "${VERSION}" ]; then exit 1; fi

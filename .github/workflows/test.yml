@@ -6,7 +6,6 @@ on:
       - 'README.md'
       - 'LICENSE.txt'
       - '.gitignore'
-      - 'requirements.txt'
 
 jobs:
   test:
@@ -18,14 +17,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Set up Python ${{ matrix.python-version }} 🐍
-      uses: actions/setup-python@v5
+    - name: Set up uv 🐍
+      uses: astral-sh/setup-uv@v5
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies ⚙️
-      run: |
-        python -m pip install --upgrade pip
-        pip install ".[test]"
+      run: uv sync --extra test
     - name: Test with pytest ✅
-      run: |
-        pytest --cov=reproj
+      run: uv run pytest --cov=reproj
