@@ -34,7 +34,7 @@ def test_reproj_point(example_point_a, example_point_b):
     assert round(reproj_b.y, 3) == 664114.162
 
 
-def test_reproj_point(example_shape):
+def test_reproj_shape(example_shape):
 
     reproj_a = reproj(example_shape, 4326, 32630)
     assert round(reproj_a.x, 3) == 721383.146
