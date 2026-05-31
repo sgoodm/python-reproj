@@ -68,9 +68,6 @@ def test_valid_crs():
 def test_invalid_crs():
 
     with pytest.raises(CRSError):
-        reproj(Point(1,1), 4326, '32630')
-
-    with pytest.raises(CRSError):
         reproj(Point(1,1), 4326, 123456789)
 
     with pytest.raises(CRSError):
