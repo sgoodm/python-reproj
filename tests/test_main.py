@@ -42,21 +42,21 @@ def test_reproj_shape(example_shape):
 
 
 def test_reproj_line():
-    src_4326 = fiona.open('./examples/data/linestring_4326.geojson')
-    src_32630 = fiona.open('./examples/data/linestring_32630.geojson')
-    assert round(reproj(shape(src_4326[0].geometry), 4326, 32630).length, 3) == round(shape(src_32630[0].geometry).length, 3)
+    with fiona.open('./examples/data/linestring_4326.geojson') as src_4326, \
+         fiona.open('./examples/data/linestring_32630.geojson') as src_32630:
+        assert round(reproj(shape(src_4326[0].geometry), 4326, 32630).length, 3) == round(shape(src_32630[0].geometry).length, 3)
 
 
 def test_reproj_polygon():
-    src_4326 = fiona.open('./examples/data/polygon_4326.geojson')
-    src_32630 = fiona.open('./examples/data/polygon_32630.geojson')
-    assert round(reproj(shape(src_4326[0].geometry), 4326, 32630).area, 3) == round(shape(src_32630[0].geometry).area, 3)
+    with fiona.open('./examples/data/polygon_4326.geojson') as src_4326, \
+         fiona.open('./examples/data/polygon_32630.geojson') as src_32630:
+        assert round(reproj(shape(src_4326[0].geometry), 4326, 32630).area, 3) == round(shape(src_32630[0].geometry).area, 3)
 
 
 def test_reproj_multipolygon():
-    src_4326 = fiona.open('./examples/data/multipolygon_4326.geojson')
-    src_32630 = fiona.open('./examples/data/multipolygon_32630.geojson')
-    assert round(reproj(shape(src_4326[0].geometry), 4326, 32630).area, 3) == round(shape(src_32630[0].geometry).area, 3)
+    with fiona.open('./examples/data/multipolygon_4326.geojson') as src_4326, \
+         fiona.open('./examples/data/multipolygon_32630.geojson') as src_32630:
+        assert round(reproj(shape(src_4326[0].geometry), 4326, 32630).area, 3) == round(shape(src_32630[0].geometry).area, 3)
 
 
 def test_valid_crs():
@@ -67,8 +67,8 @@ def test_valid_crs():
 
 def test_invalid_crs():
 
-    # with pytest.raises(CRSError):
-    #     reproj(Point(1,1), 4326, '32630')
+    with pytest.raises(CRSError):
+        reproj(Point(1,1), 4326, '32630')
 
     with pytest.raises(CRSError):
         reproj(Point(1,1), 4326, 123456789)
