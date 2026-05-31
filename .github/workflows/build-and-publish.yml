@@ -16,8 +16,6 @@ jobs:
     - uses: actions/checkout@v4
     - name: Set up uv 🐍
       uses: astral-sh/setup-uv@v5
-      with:
-        python-version: '3.x'
     - name: Get version
       run: |
         grep "__version__ = " src/reproj/__init__.py | awk '{print "VERSION="$(NF)}' | tr -d \" >> $GITHUB_ENV
