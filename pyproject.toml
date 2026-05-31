@@ -32,7 +32,7 @@ classifiers = [
 ]
 requires-python = ">=3.7"
 dependencies = [
-    "pyproj >=2.1.0",
+    "pyproj >=2.2.0",
     "shapely",
 ]
 
