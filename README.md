@@ -5,9 +5,10 @@ Reproject shapely features
 [![build badge](https://github.com/sgoodm/python-reproj/actions/workflows/test-with-coverage.yml/badge.svg)](https://github.com/sgoodm/python-reproj/actions/workflows/test-and-coverage.yml)
 [![Coverage Status](https://coveralls.io/repos/github/sgoodm/python-reproj/badge.svg?branch=main)](https://coveralls.io/github/sgoodm/python-reproj?branch=main)
 [![Downloads](https://static.pepy.tech/personalized-badge/reproj?period=total&units=international_system&left_color=lightgrey&right_color=brightgreen&left_text=Downloads)](https://pepy.tech/project/reproj)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/sgoodm/python-reproj/main?labpath=examples%2Fbasic_example.ipynb)
 
 
-Reproj is a minimalistic package designed to do one thing: reproject shapely features with a single call. [GeoPandas](https://github.com/geopandas/geopandas) has a simple `to_crs` method for GeoDataFrames which we aim to mirror in ease of use for standalone shapely features. To be honest, this isn't difficult to do using [pyproj](https://github.com/pyproj4/pyproj) and [shapely](https://github.com/shapely/shapely) with a couple of lines of code, but we decided to make it even easier.
+Reproj is a minimalistic package designed to do one thing: reproject shapely features with a single call. If you're already working with a GeoDataFrame, [GeoPandas](https://github.com/geopandas/geopandas)' `to_crs` is the right tool — but if you have standalone [Shapely](https://github.com/shapely/shapely) geometry objects, reproj lets you reproject them directly without wrapping them in a GeoDataFrame or pulling in GeoPandas as a dependency. Under the hood it uses [pyproj](https://github.com/pyproj4/pyproj) and `shapely.ops.transform`; reproj just removes the boilerplate.
 
 Without reproj, you would use the following:
 ``` python
